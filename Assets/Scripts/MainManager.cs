@@ -69,7 +69,7 @@ public class MainManager : MonoBehaviour
     void AddPoint(int point)
     {
         m_Points += point;
-        ScoreText.text = ScoreManager.Instance.playerName.text + " Score: " + m_Points;
+        ScoreText.text = ScoreManager.Instance.activePlayer + " Score: " + m_Points;
     }
 
     public void GameOver()
@@ -79,7 +79,7 @@ public class MainManager : MonoBehaviour
         if(m_Points > ScoreManager.Instance.bestScore)
         {
             ScoreManager.Instance.bestScore = m_Points;
-            ScoreManager.Instance.bestPlayer = ScoreManager.Instance.playerName.text;
+            ScoreManager.Instance.bestPlayer = ScoreManager.Instance.activePlayer;
             ScoreManager.Instance.SaveData();
         }
                 

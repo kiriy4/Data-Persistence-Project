@@ -9,7 +9,8 @@ public class ScoreManager : MonoBehaviour
     public static ScoreManager Instance;
     public int bestScore;
     public string bestPlayer;
-    public TMP_InputField playerName;
+    //public TMP_InputField playerName;
+    public string activePlayer;
     
     // Start is called before the first frame update
     private void Awake()
@@ -23,7 +24,7 @@ public class ScoreManager : MonoBehaviour
         Instance = this;
         DontDestroyOnLoad(gameObject);
         LoadData();
-        
+                
     }
 
     [System.Serializable]
@@ -32,6 +33,7 @@ public class ScoreManager : MonoBehaviour
     {
         public int bestScore;
         public string bestPlayer;
+        public string player;
     }
 
     public void SaveData()
@@ -39,6 +41,7 @@ public class ScoreManager : MonoBehaviour
         SaveElements elements = new SaveElements();
         elements.bestPlayer = bestPlayer;
         elements.bestScore = bestScore;
+        
 
         string json = JsonUtility.ToJson(elements);
         File.WriteAllText(Application.persistentDataPath + "/savefile.json", json);
@@ -56,5 +59,9 @@ public class ScoreManager : MonoBehaviour
             bestPlayer = elements.bestPlayer;
             bestScore = elements.bestScore;
         }
+    }
+    public void ActiveGame(string player)
+    {
+        activePlayer = player;
     }
 }

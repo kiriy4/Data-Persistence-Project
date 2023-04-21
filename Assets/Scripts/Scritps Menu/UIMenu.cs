@@ -50,6 +50,7 @@ public class UIMenu : MonoBehaviour
 
         Debug.Log("Game started. Player name is: " + playerName.text);
         SceneManager.LoadScene(1);
+        ScoreManager.Instance.ActiveGame(playerName.text);
     }    
 
 
